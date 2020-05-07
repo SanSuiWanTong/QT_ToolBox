@@ -1,6 +1,28 @@
 var objGlobal = new Object;
 objGlobal.initialized = false;
+objGlobal.controlObject = null;
 
+/* use QJSEngine */
+objGlobal.loadTools = function() {
+
+    if (!this.initialized) {
+        this.controlObject = new CenterControl();
+        this.controlObject.testSignal.connect(testSlot);
+        this.controlObject.createMainWindow();
+
+        this.initialized = true;
+    }
+};
+
+function testSlot(){
+    if(this.controlObject !== null)
+        this.controlObject.printMsg("called testSlot");
+}
+
+
+
+/* use QScriptEngine*/
+/*
 objGlobal.loadTool = function() {
     //debugger
     var argsArray = this.loadTool.arguments;
@@ -16,6 +38,9 @@ objGlobal.loadTool = function() {
 };
 
 objGlobal.qsTestSlot = function() {
-    debugger
     var argsArray = this.loadTool.arguments;
 };
+
+*/
+
+
