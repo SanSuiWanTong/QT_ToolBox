@@ -4,10 +4,10 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    QPushButton* bt = new QPushButton(this);
-    bt->setText("SendSignaltoJS");
+//    QPushButton* bt = new QPushButton(this);
+//    bt->setText("SendSignaltoJS");
 
-    connect(bt,SIGNAL(clicked()),this,SLOT(sendSignal()));
+//    connect(bt,SIGNAL(clicked()),this,SLOT(sendSignal()));
 
 }
 

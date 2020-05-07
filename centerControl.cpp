@@ -1,9 +1,9 @@
 #include "centerControl.h"
 #include <QDebug>
 
+
 centerControl::centerControl()
 {
-
 }
 
 void centerControl::createMainWindow()
@@ -13,4 +13,7 @@ void centerControl::createMainWindow()
     emit testSignal();
 }
 
-
+void centerControl::printMsg(QJSValue msg)
+{
+    qDebug()<<msg.toString();
+}
