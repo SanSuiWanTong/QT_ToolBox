@@ -10,9 +10,10 @@ class centerControl: public QObject
 public:
     Q_INVOKABLE centerControl();
     Q_INVOKABLE void createMainWindow();
-    Q_INVOKABLE QMainWindow* getMainWindow(){ return m_pMainWindow; }
+    Q_INVOKABLE void createQcharWidget();
     Q_INVOKABLE void printMsg(QJSValue msg);
 
+    //Q_INVOKABLE QMainWindow* getMainWindow(){ return m_pMainWindow; }
 signals:
     void testSignal();
 

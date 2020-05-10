@@ -7,8 +7,12 @@ objGlobal.loadTools = function() {
 
     if (!this.initialized) {
         this.controlObject = new CenterControl();
-        this.controlObject.testSignal.connect(testSlot);
-        this.controlObject.createMainWindow();
+        //To show QChar Widget
+        this.controlObject.createQcharWidget();
+
+        //To show MainWindow
+        //this.controlObject.testSignal.connect(testSlot);
+        //this.controlObject.createMainWindow();
 
         this.initialized = true;
     }

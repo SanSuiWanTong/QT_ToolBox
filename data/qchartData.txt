@@ -1,0 +1,11 @@
+4.28:reports 2.88 million confirmed cases (85,530 new) and 198,668 deaths (4,982 new) worldwide.
+4.29:reports 2.95 million confirmed cases (76,026 new) and 202,597 deaths (3,932 new) worldwide
+4.30:reports 3.02 million confirmed cases (66,276 new) and 207,973 deaths (5,376 new) worldwide.
+5.1:reports 3.09 million confirmed cases (71,839 new) and 217,769 deaths (9,797 new) worldwide. 
+5.4:reports 3.35 million confirmed cases (82,763 new from the previous day; approximately 260,000 new since Friday’s briefing) and 238,628 deaths (8,657 new from the previous day; 20,859 new since Friday’s briefing).
+5.5:reports 3.44 million confirmed cases (86,108 new) and 239,604 deaths (976 new). 
+5.6:reports 3.52 million confirmed cases (81,454 new) and 243,401 deaths (3,797 new).
+5.7:reports 3.59 million confirmed cases (71,463 new) and 247,503 deaths (4,102 new).
+5.8:reports 3.67 million confirmed cases (83,456 new) and 254,045 deaths (6,539 new)
+
+

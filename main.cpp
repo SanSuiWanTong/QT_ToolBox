@@ -12,10 +12,11 @@ void preLoadScreen(QWidget * win,QApplication& a){
     delete splash;
 }
 
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    preLoadScreen(NULL,a);
+    //preLoadScreen(NULL,a);
 
     QJSEngineDemo jsEngine;
     jsEngine.initCenterControl();

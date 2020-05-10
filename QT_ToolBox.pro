@@ -1,4 +1,4 @@
-QT       += core gui scripttools script qml
+QT       += core gui scripttools script qml charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     QJSEngineDemo.cpp \
     QScriptEngineDemo.cpp \
+    QcharWidget.cpp \
     centerControl.cpp \
     main.cpp \
     mainwindow.cpp
@@ -25,6 +26,7 @@ SOURCES += \
 HEADERS += \
     QJSEngineDemo.h \
     QScriptEngineDemo.h \
+    QcharWidget.h \
     centerControl.h \
     mainwindow.h
 
@@ -36,3 +38,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     script/commonTree.js \
     script/loadTool.js
+
+FORMS += \
+    QcharWidget.ui
