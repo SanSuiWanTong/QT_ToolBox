@@ -16,16 +16,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    3rdparty/richtextlineedit.cpp \
+    MVC/AbstractItemData.cpp \
+    MVC/AbstractItemDelegate.cpp \
+    MVC/AbstractItemModel.cpp \
+    MVC/AbstractItemView.cpp \
+    MVC/AbstractItemWidget.cpp \
+    MVC/AbstractProxyModel.cpp \
+    MVC/QTreeTableListWidgetDemo.cpp \
     QJSEngineDemo.cpp \
-    QScriptEngineDemo.cpp \
+    QScriptEngineDemo.cpp \    
     QcharWidget.cpp \
     centerControl.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    3rdparty/richtextlineedit.hpp \
+    MVC/AbstractItemData.h \
+    MVC/AbstractItemDelegate.h \
+    MVC/AbstractItemModel.h \
+    MVC/AbstractItemView.h \
+    MVC/AbstractItemWidget.h \
+    MVC/AbstractProxyModel.h \
+    MVC/QTreeTableListWidgetDemo.h \
     QJSEngineDemo.h \
-    QScriptEngineDemo.h \
+    QScriptEngineDemo.h \    
     QcharWidget.h \
     centerControl.h \
     mainwindow.h
@@ -36,6 +52,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    data/abstractItemData.txt \
+    data/qchartData.txt \
     script/commonTree.js \
     script/loadTool.js
 

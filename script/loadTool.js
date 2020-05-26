@@ -7,10 +7,25 @@ objGlobal.loadTools = function() {
 
     if (!this.initialized) {
         this.controlObject = new CenterControl();
-        //To show QChar Widget
-        this.controlObject.createQcharWidget();
+        this.controlObject.createMVCView()
 
-        //To show MainWindow
+        /*$$ Tree/Table/List Widget */
+        //To show createQTreeWidget
+        //this.controlObject.createQTreeWidget();
+        //To show createQTableWidget
+        //this.controlObject.createQTableWidget();
+        //To show createQTableWidget
+        //this.controlObject.createQListWidget();
+
+        /*$$ Tree/Table/List View/Model*/
+//        this.controlObject.createQTreeView();
+//        this.controlObject.createQTableView();
+//        this.controlObject.createQListView();
+
+        //$$To show QChar Widget
+        //this.controlObject.createQcharWidget();
+
+        //$$To show MainWindow
         //this.controlObject.testSignal.connect(testSlot);
         //this.controlObject.createMainWindow();
 

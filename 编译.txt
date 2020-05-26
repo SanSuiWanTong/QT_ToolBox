@@ -1,0 +1,2 @@
+Based on Qt 5.14.0 (MSVC 2017, 32 bit)
+低版本Qchart或部分函数不兼容

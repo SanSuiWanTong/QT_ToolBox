@@ -11,6 +11,17 @@ public:
     Q_INVOKABLE centerControl();
     Q_INVOKABLE void createMainWindow();
     Q_INVOKABLE void createQcharWidget();
+
+    Q_INVOKABLE void createQTreeWidget();
+    Q_INVOKABLE void createQTableWidget();
+    Q_INVOKABLE void createQListWidget();
+
+    Q_INVOKABLE void createQTreeView();
+    Q_INVOKABLE void createQTableView();
+    Q_INVOKABLE void createQListView();
+
+    Q_INVOKABLE void createMVCView();
+
     Q_INVOKABLE void printMsg(QJSValue msg);
 
     //Q_INVOKABLE QMainWindow* getMainWindow(){ return m_pMainWindow; }
