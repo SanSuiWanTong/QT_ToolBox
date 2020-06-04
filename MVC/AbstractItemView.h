@@ -69,6 +69,8 @@ public:
 
 public slots:
     void testItemChange();
+    void testItemDel();
+    void testItemAdd();
 
 private:
     AbstractItemModel* m_itemModel;

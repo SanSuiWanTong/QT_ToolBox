@@ -25,8 +25,7 @@ public:
 
     void     load();    
     void     setChecked(bool);
-    void     addChild(AbstractItemData*);
-    void     testItemChange();
+    void     addChild(AbstractItemData*,int pos=-1);
     void     getItemAndChildStream(QTextStream &stream, AbstractItemData*item = 0);
     void     setItemAndChildStream(QTextStream *stream, int row, int col, AbstractItemData*item = 0);
 
@@ -42,7 +41,10 @@ public:
     bool    getChecked();
     bool    setData(int col,const QVariant&);
     bool    removeChild(int);
-
+    //test
+    void     testItemChange();
+    void     testItemAdd(int row);
+    //
 signals:
     void    itemDataChanged(AbstractItemData*);
 

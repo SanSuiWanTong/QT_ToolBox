@@ -152,10 +152,7 @@ void AbstractItemModel::onItemDataChange(AbstractItemData* item)
      QModelIndex endIndex   = createIndex(row,item->columnCount(),item);
      emit dataChanged(startIndex, endIndex);
 }
-void AbstractItemModel::testItemChange()
-{
-    this->rootItem->testItemChange();
-}
+
 QVariant AbstractItemModel::headerData(int section,Qt::Orientation orientation, int role) const
 {
     if (role != Qt::DisplayRole)
@@ -171,7 +168,8 @@ QMimeData *AbstractItemModel::mimeData(const QModelIndexList &indexes) const
     if (indexes.count() != 1)
         return 0;   
     if (auto dragItem = itemForIndex(indexes.at(0))) {
-        saveDragItem(dragItem);
+        saveDragItem(dragItem,dragItem->rowOfChild());
+
         QMimeData *mimeData = new QMimeData;
         QByteArray itemData;       
         QTextStream out(&itemData,QIODevice::WriteOnly);
@@ -197,19 +195,24 @@ bool AbstractItemModel::dropMimeData(const QMimeData *mimeData,
         if (row == -1)
             row = parent.isValid() ? parent.row() : rootItem->childCount();
         beginInsertRows(parent, row, row);
-        QTextStream stream(&itemData);        
-        item->setItemAndChildStream(&stream,row,column);        
+        QTextStream stream(&itemData);
+
+        item->setItemAndChildStream(&stream,row,column);
         endInsertRows();
-        removeStartDropItem();
+
+        //removeStartDropItem();
+        this->m_dropRow = row;
+        bDrop = true;
         return true;
-    }    
+    }
+
     return false;
 }
 bool AbstractItemModel::removeStartDropItem()
 {
-    auto parent = this->dragItem->parent();
-    int  row    = this->dragItem->rowOfChild();
-    auto index  = createIndex(row,0,this->dragItem);
+    auto parent = this->m_dragItem->parent();
+    int  row    = this->m_dragItem->rowOfChild();
+    auto index  = createIndex(row,0,this->m_dragItem);
 
     beginRemoveRows(index, row, row);
     parent->removeChild(row);
@@ -218,18 +221,24 @@ bool AbstractItemModel::removeStartDropItem()
 
     return true;
 }
+
 bool  AbstractItemModel::removeRows(int row, int count, const QModelIndex &parent)
 {
      if (!rootItem)
-         return false;
-     if(bDrop)
-     {
-         this->dragItem=nullptr;
-         bDrop = false;
-         return false;
-     }
+         return false;     
 
      auto *item = parent.isValid() ? itemForIndex(parent) : rootItem;
+
+     if(bDrop)
+     {
+         if(this->m_dragItem->parent() == item)//同级
+         {
+             if(this->m_dropRow <= row) row = row + 1;
+         }
+         this->m_dragItem=nullptr;
+         bDrop = false;
+     }
+
      int endRow = row + count - 1;
      beginRemoveRows(parent, row, endRow);
      for (int i = row; i <= endRow; ++i)
@@ -237,4 +246,29 @@ bool  AbstractItemModel::removeRows(int row, int count, const QModelIndex &paren
      endRemoveRows();
 
      return true;
- }
+}
+//test
+void AbstractItemModel::testItemChange()
+{
+    rootItem->testItemChange();
+}
+void AbstractItemModel::testItemDel()
+{
+    int delRow = 3;
+    auto parent = rootItem->childAt(0)->childAt(1);
+    auto item = parent->childAt(delRow);
+    QModelIndex index = createIndex(delRow,0,item);
+    beginRemoveRows(index, delRow, delRow);
+    parent->removeChild(delRow);
+    endRemoveRows();
+}
+void AbstractItemModel::testItemAdd()
+{
+    int i = 0;
+    auto parent = rootItem->childAt(0)->childAt(1);
+    QModelIndex index = createIndex(1,0,parent);
+    beginInsertRows(index, i, i);
+    rootItem->testItemAdd(i);
+    endInsertRows();
+}
+//

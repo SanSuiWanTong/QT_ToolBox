@@ -4,6 +4,7 @@
 #include <QFontMetrics>
 #include <QPainter>
 #include <QMouseEvent>
+#include <QtDebug>
 const int ExtraHeight = 3;
 
 //AbstractItemView
@@ -42,7 +43,7 @@ QRect AbstractItemView::visualRect(const QModelIndex &index) const
         rect = viewportRectForRow(index.row()).toRect();
     return rect;
 }
-#include <QtDebug>
+
 void AbstractItemView::calculateRectsIfNecessary() const
 {
     if (!hashIsDirty)
@@ -294,7 +295,7 @@ void AbstractItemView::mousePressEvent(QMouseEvent *event)
 treeView::treeView(QWidget*parent):QTreeView(parent),m_itemModel(nullptr),pxyModel(nullptr)
 {
     this->setItemDelegate(new ItemDelegate(this));
-
+    this->move(600,100);
 
     m_itemModel = new AbstractItemModel();
     //pxyModel = new ProxyModel();
@@ -306,10 +307,21 @@ treeView::treeView(QWidget*parent):QTreeView(parent),m_itemModel(nullptr),pxyMod
     this->setAllColumnsShowFocus(true);
     this->setDragDropMode(QAbstractItemView::DragDrop);
 
-//    QPushButton *button = new QPushButton("testItemChange");
-//    connect(button,SIGNAL(clicked()),this,SLOT(testItemChange()));
-//    button->show();
+    //test button
+    QPushButton *button = new QPushButton("testItemChange");
+    connect(button,SIGNAL(clicked()),this,SLOT(testItemChange()));
+    button->move(400,100);
+    button->show();
 
+    QPushButton *button_Del = new QPushButton("testItemDel");
+    connect(button_Del,SIGNAL(clicked()),this,SLOT(testItemDel()));
+    button_Del->move(400,200);
+    button_Del->show();
+
+    QPushButton *button_Add = new QPushButton("testItemAdd");
+    connect(button_Add,SIGNAL(clicked()),this,SLOT(testItemAdd()));
+    button_Add->move(400,300);
+    button_Add->show();
 }
 
 treeView::~treeView()
@@ -324,4 +336,12 @@ void treeView::testItemChange()
 {
     //static_cast<AbstractItemModel*>(pxyModel->sourceModel())->testItemChange();
     m_itemModel->testItemChange();
+}
+void treeView::testItemDel()
+{
+    m_itemModel->testItemDel();
+}
+void treeView::testItemAdd()
+{
+    m_itemModel->testItemAdd();
 }

@@ -19,9 +19,7 @@ public:
     int          columnCount(const QModelIndex &parent = QModelIndex())                       const;
 
     Qt::ItemFlags flags(const QModelIndex &index) const;
-
     void          announceItemChanged(AbstractItemData *item);
-    void          testItemChange();
     QVariant      headerData(int section,
                              Qt::Orientation orientation,
                              int role=Qt::DisplayRole) const;
@@ -39,9 +37,19 @@ public:
                                  int row,
                                  int column,
                                  const QModelIndex &parent);
-    void saveDragItem(AbstractItemData *item)const { dragItem = item; }
+    void saveDragItem(AbstractItemData *item,int dragrow)const {
+            m_dragItem = item;
+            m_dragRow  = dragrow;
+    }
+
     bool removeStartDropItem();
+
+    //test
+    void          testItemChange();
+    void          testItemDel();
+    void          testItemAdd();
     //
+
 public slots:
     void onItemDataChange(AbstractItemData*);
 
@@ -49,7 +57,10 @@ private:
     AbstractItemData* itemForIndex(const QModelIndex &index) const;
     AbstractItemData* rootItem;
 
-    mutable AbstractItemData * dragItem;
+    mutable AbstractItemData * m_dragItem;
+    mutable int m_dragRow;
+    mutable int m_dropRow;
+
     bool bDrop = false;
 };
 

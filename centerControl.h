@@ -22,6 +22,8 @@ public:
 
     Q_INVOKABLE void createMVCView();
 
+    Q_INVOKABLE void createGraphicsView();
+
     Q_INVOKABLE void printMsg(QJSValue msg);
 
     //Q_INVOKABLE QMainWindow* getMainWindow(){ return m_pMainWindow; }

@@ -1,4 +1,4 @@
-QT       += core gui scripttools script qml charts
+QT       += core gui scripttools script qml charts printsupport svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,7 +16,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    3rdparty/aqp.cpp \
     3rdparty/richtextlineedit.cpp \
+    3rdparty/widgetPropertySet/brushwidget.cpp \
+    3rdparty/widgetPropertySet/penwidget.cpp \
+    3rdparty/widgetPropertySet/swatch.cpp \
+    3rdparty/widgetPropertySet/transformwidget.cpp \
+    Graphic_2D/GraphicsItem.cpp \
+    Graphic_2D/GraphicsScene.cpp \
+    Graphic_2D/GraphicsView.cpp \
+    Graphic_2D/PropertyObject.cpp \
+    Graphic_2D/animation/coloritem.cpp \
+    Graphic_2D/animation/robot.cpp \
     MVC/AbstractItemData.cpp \
     MVC/AbstractItemDelegate.cpp \
     MVC/AbstractItemModel.cpp \
@@ -32,7 +43,18 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    3rdparty/aqp.hpp \
     3rdparty/richtextlineedit.hpp \
+    3rdparty/widgetPropertySet/brushwidget.hpp \
+    3rdparty/widgetPropertySet/penwidget.hpp \
+    3rdparty/widgetPropertySet/swatch.hpp \
+    3rdparty/widgetPropertySet/transformwidget.hpp \
+    Graphic_2D/GraphicsItem.h \
+    Graphic_2D/GraphicsScene.h \
+    Graphic_2D/GraphicsView.h \
+    Graphic_2D/PropertyObject.h \
+    Graphic_2D/animation/coloritem.h \
+    Graphic_2D/animation/robot.h \
     MVC/AbstractItemData.h \
     MVC/AbstractItemDelegate.h \
     MVC/AbstractItemModel.h \

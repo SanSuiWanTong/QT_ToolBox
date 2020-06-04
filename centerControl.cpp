@@ -3,6 +3,7 @@
 #include "./MVC/QTreeTableListWidgetDemo.h"
 #include "./MVC/AbstractItemView.h"
 #include "./MVC/AbstractItemWidget.h"
+#include "Graphic_2D/GraphicsView.h"
 #include <QDebug>
 
 centerControl::centerControl()
@@ -62,6 +63,13 @@ void centerControl::createMVCView()
     //auto *t = new AbstractItemView();
     //test 3
     //auto *t = new AbstractItemWidget();
+    t->show();
+}
+
+//GraphicsView
+void centerControl::createGraphicsView()
+{
+    auto t = new GraphicsView();
     t->show();
 }
 

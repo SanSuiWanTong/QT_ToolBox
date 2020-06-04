@@ -154,9 +154,12 @@ AbstractItemData* AbstractItemData::parent()         const
 {
     return this->m_parentItem;
 }
-void     AbstractItemData::addChild(AbstractItemData* item)
+void     AbstractItemData::addChild(AbstractItemData* item, int pos)
 {
-    this->m_dataChildList<<item;
+    if(-1 != pos)
+        this->m_dataChildList.insert(pos,item);
+    else
+        this->m_dataChildList<<item;
 }
 
 bool    AbstractItemData::getChecked()
@@ -185,14 +188,6 @@ bool    AbstractItemData::removeChild(int i)
     return true;
 }
 
-void    AbstractItemData::testItemChange()
-{
-    AbstractItemData* t = m_dataChildList.at(2)->m_dataChildList.at(3);
-    QString str = "test change";
-    t->setData(0,"test Change");
-    emit itemDataChanged(t);
-}
-
 void  AbstractItemData::getItemAndChildStream(QTextStream& stream, AbstractItemData* item)
 {
     if(0 == item)                           item = this;
@@ -213,3 +208,20 @@ void  AbstractItemData::setItemAndChildStream(QTextStream* stream, int row, int 
        parseStr(&p_leval,line,row);
     }
 }
+
+//start test
+void    AbstractItemData::testItemChange()
+{
+    AbstractItemData* t = m_dataChildList.at(2)->m_dataChildList.at(3);
+    t->setData(0,"test Change");
+    emit itemDataChanged(t);
+}
+void    AbstractItemData::testItemAdd(int row)
+{
+    AbstractItemData* parentNode = m_dataChildList.at(0)->m_dataChildList.at(1);
+    auto childItem = new AbstractItemData(parentNode);
+    childItem->m_dataColList<<(DataType){"Add Test","",""};
+    parentNode->addChild(childItem,row);
+}
+
+//end test

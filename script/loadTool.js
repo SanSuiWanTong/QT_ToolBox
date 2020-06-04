@@ -7,7 +7,9 @@ objGlobal.loadTools = function() {
 
     if (!this.initialized) {
         this.controlObject = new CenterControl();
-        this.controlObject.createMVCView()
+        this.controlObject.createGraphicsView();
+
+        //this.controlObject.createMVCView()
 
         /*$$ Tree/Table/List Widget */
         //To show createQTreeWidget
